@@ -79,12 +79,12 @@ def predict_summary(sim_mat,sentences):
 
 
 # routes
-@app.route('/', methods=['POST','GET'])
+@app.route('/', methods=['POST'])
 def predict():
-  #text_data = request.get_json(force=True)["data"]
+  text_data = request.get_json(force=True)["data"]
   #text_data = request.args.get('data')
-  with open('MLtextsample.txt', 'r', newline='', encoding='ISO-8859-1') as csvfile:
-        text_data =csvfile.read()
+  #with open('MLtextsample.txt', 'r', newline='', encoding='ISO-8859-1') as csvfile:
+        #text_data =csvfile.read()
   sentences, clean_sentences=preprocessing(text_data)
   sentence_vectors=word_embedding(clean_sentences)
   sim_mat=similarity_matrix(len(sentences), sentence_vectors)
